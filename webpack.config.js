@@ -15,6 +15,13 @@ const devServerProxyTarget
     = process.env.WEBPACK_DEV_SERVER_PROXY_TARGET || 'https://alpha.jitsi.net';
 
 /**
+ * The IP address where Jitsi Meet will be deployed in the context of
+ * development with webpack-dev-server.
+ */
+const devServerTarget
+    = process.env.WEBPACK_DEV_SERVER_TARGET || '127.0.0.1';
+
+/**
  * Build a Performance configuration object for the given size.
  * See: https://webpack.js.org/configuration/performance/
  *
@@ -258,7 +265,7 @@ function getDevServerConfig() {
                 warnings: false
             }
         },
-        host: '127.0.0.1',
+        host: devServerTarget,        
         hot: true,
         proxy: {
             '/': {
